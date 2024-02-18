@@ -157,6 +157,8 @@ echo -e "${Yellow}Testing nslookup Domain:${NC} "
 nslookup $domain
 nslookup www.$domain
 nslookup $ip
+rm $0
 echo -e "${Blue}Thanks for using my Services${NC}"
 echo -e "${Blue}-R${NC}"
+
 
