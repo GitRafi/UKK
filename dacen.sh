@@ -153,7 +153,7 @@ echo -e "${Yellow}	Nama Database : wordpress"
 echo -e "${Yellow} 	Nama Database Admin : $admindb"
 echo -e "${Yellow} 	Password Database Admin : $adminpw"
 echo -e "##############################################################################"
-echo -e "${Yellow}Testing nslookup Domain: "
+echo -e "${Yellow}Testing nslookup Domain:${NC} "
 nslookup $domain
 nslookup www.$domain
 nslookup $ip
