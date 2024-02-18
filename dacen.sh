@@ -107,8 +107,8 @@ echo -e "Creating Database and Granting Privileges..."
 mysql --user root <<EOFMYSQL
 
 CREATE DATABASE wordpress;
-CREATE USER '$admindb'@'localhost' identified by '$adminpw';
-GRANT ALL PRIVILEGES ON wordpress.* to '$admindb'@'localhost';
+CREATE USER '$admindb'@'localhost' IDENTIFIED BY '$adminpw';
+GRANT ALL PRIVILEGES ON wordpress.* to '$admindb'@'localhost' IDENTIFIED BY '$adminpw';
 FLUSH PRIVILEGES;
 EOFMYSQL
 
@@ -135,8 +135,8 @@ sed -i 's/access.log/wp.access.log/g' $webcfg
 echo -e "${Purple} Configuring Wordpress...${NC}"
 cp /var/www/wordpress/wp-config-sample.php $wpcfg
 sed -i 's/database_name_here/wordpress/g' $wpcfg
-sed -i 's/username_here/$admindb/g' $wpcfg
-sed -i 's/password_here/$adminpw/g' $wpcfg
+sed -i "s/username_here/$admindb/g" $wpcfg
+sed -i "s/password_here/$adminpw/g" $wpcfg
 
 #Enabling Site
 echo -e "${Purple} Disable default site...${NC}"
@@ -147,10 +147,12 @@ echo -e "${Green} Restarting Apache...${NC}"
 systemctl restart apache2
 
 echo -e "${Yellow}Kamu sudah bisa mengakses Wordpress kamu dengan Link: http://$domain"
+echo -e "##############################################################################"
 echo -e "${Yellow}Tambahan Informasi:"
 echo -e "${Yellow}	Nama Database : wordpress"
 echo -e "${Yellow} 	Nama Database Admin : $admindb"
 echo -e "${Yellow} 	Password Database Admin : $adminpw"
+echo -e "##############################################################################"
 echo -e "${Yellow}Testing nslookup Domain: "
 nslookup $domain
 nslookup www.$domain
