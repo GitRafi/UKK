@@ -135,8 +135,8 @@ cp /var/www/wordpress/wp-config-sample.php $wpcfg
 sed -i 's/database_name_here/wordpress/g' $wpcfg
 sed -i "s/username_here/$admindb/g" $wpcfg
 sed -i "s/password_here/$adminpw/g" $wpcfg
-chown -R www-data:www:data /var/www/wordpress/
-chmod -R 755 /var/www/wordpress/
+chown -R www-data:www-data /var/www/wordpress/
+chmod -R 777 /var/www/wordpress/
 
 #Enabling Site
 echo -e "${Purple} Disable default site...${NC}"
