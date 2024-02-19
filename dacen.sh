@@ -93,7 +93,7 @@ echo -e "${Green} restarting Bind service...${NC}"
 systemctl restart named
 
 #Setup Resolvconf
-echo "${Purple} Mengganti Resolvconf...${NC}"
+echo -e "${Purple} Mengganti Resolvconf...${NC}"
 sed -i "s/127.0.0.53/$ip/g" /etc/resolv.conf
 
 #Install LAMPP
@@ -103,7 +103,7 @@ apt-get install -y apache2 libapache2-mod-php mariadb-server php php-{cli,curl,x
 #Configuring Database
 systemctl start mariadb.service
 systemctl restart mariadb.service
-echo -e "Creating Database and Granting Privileges..."
+echo -e "${Purple} Creating Database and Granting Privileges...${NC}"
 mysql --user root <<EOFMYSQL
 
 CREATE DATABASE wordpress;
@@ -117,8 +117,6 @@ echo -e "${Purple} Downloading Wordpress zzz${NC}"
 wget https://wordpress.org/latest.tar.gz
 tar -xf latest.tar.gz
 mv wordpress /var/www/
-chown -R www-data:www:data /var/www/wordpress/
-chmod -R 755 /var/www/wordpress/
 cp /etc/apache2/sites-available/000-default.conf $webcfg
 sed -i 's/webmaster/root/g' $webcfg
 sed -i 's/html/wordpress/g' $webcfg
@@ -137,6 +135,8 @@ cp /var/www/wordpress/wp-config-sample.php $wpcfg
 sed -i 's/database_name_here/wordpress/g' $wpcfg
 sed -i "s/username_here/$admindb/g" $wpcfg
 sed -i "s/password_here/$adminpw/g" $wpcfg
+chown -R www-data:www:data /var/www/wordpress/
+chmod -R 755 /var/www/wordpress/
 
 #Enabling Site
 echo -e "${Purple} Disable default site...${NC}"
@@ -153,7 +153,7 @@ echo -e "${Yellow}	Nama Database : wordpress"
 echo -e "${Yellow} 	Nama Database Admin : $admindb"
 echo -e "${Yellow} 	Password Database Admin : $adminpw"
 echo -e "##############################################################################"
-echo -e "${Yellow}Testing nslookup Domain:${NC} "
+echo -e "Testing nslookup Domain: "
 nslookup $domain
 nslookup www.$domain
 nslookup $ip
