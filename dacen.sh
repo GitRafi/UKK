@@ -151,13 +151,11 @@ echo -e "${Yellow}Kamu sudah bisa mengakses Wordpress kamu dengan Link: http://$
 echo -e "${Yellow}Tambahan Informasi:"
 echo -e "${Yellow}	Nama Database : wordpress"
 echo -e "${Yellow} 	Nama Database Admin : $admindb"
-echo -e "${Yellow} 	Password Database Admin : $adminpw"
+echo -e "${Yellow} 	Password Database Admin : $admindbpw"
 echo -e "##############################################################################${NC}"
 echo ""
 echo -e "Testing nslookup Domain: "
 nslookup $domain
-nslookup www.$domain
-nslookup $ip
 echo -e "${Red}Jangan lupa mengganti settingan Adapter Windows untuk DNS diarahkan ke IP Ubuntu!${NC}"
 rm $0
 echo -e "${Blue}Thanks for using my Services${NC}"
