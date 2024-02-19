@@ -146,7 +146,7 @@ a2ensite wordpress.conf
 echo -e "${Green} Restarting Apache...${NC}"
 systemctl restart apache2
 
-echo -e "##############################################################################"
+echo -e "${Yellow}##############################################################################${NC}"
 echo -e "${Yellow}Kamu sudah bisa mengakses Wordpress kamu dengan Link: http://$domain"
 echo -e "${Yellow}Tambahan Informasi:"
 echo -e "${Yellow}	Nama Database : wordpress"
@@ -158,7 +158,7 @@ echo -e "Testing nslookup Domain: "
 nslookup $domain
 nslookup www.$domain
 nslookup $ip
-echo -e "${RED}Jangan lupa mengganti settingan Adapter Windows untuk DNS diarahkan ke IP Ubuntu!${NC}"
+echo -e "${Red}Jangan lupa mengganti settingan Adapter Windows untuk DNS diarahkan ke IP Ubuntu!${NC}"
 rm $0
 echo -e "${Blue}Thanks for using my Services${NC}"
 echo -e "${Blue}-R${NC}"
