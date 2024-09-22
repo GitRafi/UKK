@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Collor :v
+#Color
 Red='\033[0;31m'          # Red
 Green='\033[0;32m'        # Green
 Yellow='\033[0;33m'       # Yellow
